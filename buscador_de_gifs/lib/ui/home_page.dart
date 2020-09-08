@@ -63,12 +63,8 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
               onSubmitted: (text){
                 setState(() {
-                  if(text == "")
-                    _search = null;
-                  else{
                     _search = text;
                     _offset = 0;
-                  }
                 });
               },
             ),
@@ -102,7 +98,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   int _getCount(List data){
-    if(_search == null) return data.length;
+    if(_search == null || _search.isEmpty) return data.length;
     else return data.length + 1;
   }
   Widget _createGifTable(BuildContext context, AsyncSnapshot snapshot){
